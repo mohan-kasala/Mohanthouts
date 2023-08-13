@@ -1,0 +1,25 @@
+Create database Film;
+CREATE TABLE Artist (Art_id INT PRIMARY KEY,Art_name VARCHAR(50) NOT NULL,Art_gender VARCHAR(10));
+INSERT INTO ARTIST VALUES(101,'pawan kalyan','M'),(102,'pawan kalyan','M'),(103,'pawan kalyan','M'),(104,'pawan kalyan','M'),(105,'pawan kalyan','M');
+Select * FROM ARTIST;
+CREATE TABLE Producer(prod_id INT PRIMARY KEY,prod_name VARCHAR(50) NOT NULL,prod_phone BIGINT);
+INSERT INTO producer VALUES(101,'G.V.G.Raju',7993922790),(102,'A.M.Ratnam',9391561905),(103,'Burugupalli Sivaramakrishna',6281919220),(104,'Allu Aravind',9951197522),(105,'Bandla Ganesh',7676696328);
+Select * FROM producer;
+CREATE TABLE Movie(movie_id INT PRIMARY KEY,movie_title VARCHAR(50) NOT NULL,movie_year INT,movie_lang VARCHAR(15),prod_id INT,FOREIGN KEY(prod_id) REFERENCES Producer(prod_id));
+INSERT INTO Movie VALUES(1,'Tholiprema',1998,'Telugu',101),(2,'Kushi',2001,'Telugu',102),(3,'Thammudu',1999,'Telugu',103),(4,'jalsa',2008,'Telugu',104),(5,'Gabbar Singh',2012,'Telugu',105);
+Select * FROM Movie;
+CREATE TABLE Casting(casting_id INT PRIMARY KEY,movie_id INT,art_id INT,Role VARCHAR(20),FOREIGN KEY(art_id)REFERENCES Artist(art_id));
+INSERT INTO Casting Values(10,1,101,'HERO'),(20,2,102,'HERO'),(30,3,103,'HERO'),(40,4,104,'HERO'),(50,5,105,'HERO');
+Select * FROM Casting;
+CREATE TABLE StarRating(rating_id INT PRIMARY KEY,movie_id INT,rating DECIMAL(3,1),FOREIGN KEY (movie_id)REFERENCES Movie(movie_id));
+INSERT INTO StarRating values(111,1,5.0),(112,2,5.0),(113,3,5.0),(114,4,5.0),(115,5,5.0);
+Select * FROM StarRating;
+CREATE TABLE MovieInfo(movie_id INT PRIMARY KEY,movie_plot TEXT,status VARCHAR(150),FOREIGN KEY(movie_id)REFERENCES Movie(movie_id));
+INSERT INTO MovieInfo VALUES(1,'Tholi prema Movie is a love story','BlockBuster Hit'),
+(2,'khushi movie also pure love story ','Blockbuster'), 
+(3,'Thammudu story is inspiration to everyone because how we have to do hard work in life to succeed in life','Blockbuster Hit'),
+(4,'jalsa movie story is a middle class people how they feel difficulties in life how rich people will targeted them','Industry Hit'),
+(5,'Gabbar singh story is full comedy entertainer','Blockbuster Hit');  
+Drop database film;
+use 9368_mohan;
+select * From MovieInfo;
